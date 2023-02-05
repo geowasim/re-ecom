@@ -7,15 +7,10 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 
-import {
-  getFirestore,
-  doc,
-  getDoc,
-  setDoc,
-  collection,
-} from "firebase/firestore";
+import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_KEY,
@@ -28,7 +23,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
-
 //to sign in we need an auth provider "google.com", using method signInWithGoogleAuth
 //! it's in firebase/auth
 // sign in can be with popup or redirect to page
@@ -97,3 +91,6 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 };
 
 export const signOutUser = async () => await signOut(auth);
+
+export const onAuthStateChangeListner = (callback) =>
+  onAuthStateChanged(auth, callback);
