@@ -137,4 +137,6 @@ export const getCategoriesAndDocuments = async () => {
   }, {});
 
   return categoryMap;
+
+  // this method built hash to get a spescal structure
 };
